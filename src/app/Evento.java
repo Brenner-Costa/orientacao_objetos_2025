@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Evento {
     
     private int id;
@@ -8,38 +5,36 @@ public class Evento {
     private String local;
     private String data;
     private int capacidade;
-    private static List<Ingresso> ingressos = new ArrayList<>(); // Precisa ser global para conseguir manipular
+    private boolean online;
+    private double valorIngresso; // Encapsulamento: valor do ingresso
+    private int ingressosDisponiveis;
 
-    //Colocar um array com uma quantidade X de ingressos no construtor do Evento. 
-    //Colocar a mesma quantidade de ingresso na mesma capacidade do evento.
-        // Se mexer na 
-    //Instanciar os ingressos aqui no evento
-
-    //Como os ingressos são atributos estáticos, a cada ingresso criado, posso somar 1 até dar a capacidade do evento
-    //ACABAR TODOS OS INGRESSOS DO EVENTO.
-
-    public Evento(int id, String nome, String local, String data, int capacidade) {
+    public Evento(int id, String nome, String local, String data, int capacidade, double _valorIngresso, int _ingressosDisponiveis, boolean _online) {
         this.id = id;
         this.nome = nome;
         this.local = local;
         this.data = data;
         this.capacidade = capacidade;
+        this.valorIngresso = _valorIngresso;
+        this.ingressosDisponiveis = _ingressosDisponiveis;
+        this.online = _online;
+    }
+    public int getId() { return id; }
+    public String getNome() { return nome; }
+    public String getLocal() { return local; }
+    public String getData() { return data; }
+    public Integer getCapacidade() { return capacidade; }
+    public double getValorIngresso() { return valorIngresso; }
+    public int getIngressosDisponiveis() { return ingressosDisponiveis; }
+
+    public void reduzirIngressos(int quantidade) {
+        if (quantidade <= ingressosDisponiveis) {
+            ingressosDisponiveis -= quantidade;
+        }
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public Integer getCapacidade() {
-        return capacidade;
+    public boolean isOnline() {
+        return online;
     }
 
     public void exibirInfo() {
@@ -49,7 +44,5 @@ public class Evento {
         System.out.println("Data: " + getData());
         System.out.println("Capacidade: " + getCapacidade());
     }
-
-
 
 }

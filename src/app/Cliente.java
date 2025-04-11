@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class Cliente extends Pessoa {
     // Vai ter um ou mais eventos que vai fazer parte
     // nome, email, idade (verificar idade para comprar eventos de maior) - vão ser herdadas de pessoa.
@@ -9,7 +5,6 @@ public class Cliente extends Pessoa {
     // id do cliente -> posso gerar com números aleatórios
     
     private Integer id;
-    private List<Ingresso> ingressos = new ArrayList<>(); //Ingressos que fazem parte de eventos.
 
 
     Cliente(Integer _id, String _nome, String _email, Integer _idade) {
@@ -17,20 +12,7 @@ public class Cliente extends Pessoa {
         this.id = _id;
     }
 
-    
-    public void getIngressos() {
-        //mostrar os ingressos que um cliente tem.
-        Integer quantidadeIngresso = this.ingressos.size();
-
-        for(int i = 0; i < quantidadeIngresso; i++) {
-            System.out.println(ingressos.get(i));
-        }
-    }
-
-    //Funçao para comprar ingressos
-    public void comprarIngresso(Integer quantidadeIngressos) {
-        if()
-    }
+    public int getId() { return id; }
     
     public void atualizarNome(String _novoNome) {
         System.out.println("Atualizando nome do cliente...");
@@ -58,6 +40,5 @@ public class Cliente extends Pessoa {
         System.out.println("Idade: " + getIdade());
 
         System.out.println("----- Ingressos -----");
-        getIngressos();
     }
 }

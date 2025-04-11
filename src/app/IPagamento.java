@@ -1,3 +1,3 @@
-public interface Pagamento {
+public interface IPagamento {
     double calcularValor();
 }
