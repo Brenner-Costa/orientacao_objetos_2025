@@ -5,7 +5,7 @@ public class Evento {
     private String local;
     private String data;
     private int capacidade;
-    private boolean online;
+    private boolean online; //Essa variavel booleana que irá diferenciar um evento online de um evento presencial
     private double valorIngresso; // Encapsulamento: valor do ingresso
     private int ingressosDisponiveis;
 
@@ -19,6 +19,8 @@ public class Evento {
         this.ingressosDisponiveis = _ingressosDisponiveis;
         this.online = _online;
     }
+
+    //No diagrama acabei omitindo esses getters para facilitar a visualização
     public int getId() { return id; }
     public String getNome() { return nome; }
     public String getLocal() { return local; }
@@ -33,10 +35,12 @@ public class Evento {
         }
     }
 
+    //Método para verificar se o evento é online ou não
     public boolean isOnline() {
         return online;
     }
 
+    //exibir informações do evento
     public void exibirInfo() {
         System.out.println("Exibindo informações do evento...");
         System.out.println("Nome: " + getNome());

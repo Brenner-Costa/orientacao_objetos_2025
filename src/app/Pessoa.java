@@ -9,7 +9,7 @@ public abstract class Pessoa {
         this.idade = _idade;
     }
 
-    
+    //Métodos abstratos concretos
     public String getNome() {
         return nome;
     }

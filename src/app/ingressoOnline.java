@@ -1,5 +1,4 @@
-public class IngressoOnline extends Ingresso {
-    // Ingresso online para evento online
+public class IngressoOnline extends Ingresso { // Herda a classe abstrata ingresso
     private String linkAcesso;
     private String codigoValidacao;
 
@@ -9,10 +8,12 @@ public class IngressoOnline extends Ingresso {
         this.codigoValidacao = gerarCodigoValidacao();
     }
 
+    // Método para gerar link de acesso para o usuário que comprou o ingresso online
     private String gerarLinkAcesso() {
         return "https://evento.com/acesso/" + id;
     }
 
+    //Método para gerar o código de validação do ingresso online
     private String gerarCodigoValidacao() {
         return "VAL" + id + "-" + cliente.getId();
     }

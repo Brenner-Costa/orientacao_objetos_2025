@@ -1,9 +1,4 @@
-public class Cliente extends Pessoa {
-    // Vai ter um ou mais eventos que vai fazer parte
-    // nome, email, idade (verificar idade para comprar eventos de maior) - vão ser herdadas de pessoa.
-    // Get para ver os eventos do cliente
-    // id do cliente -> posso gerar com números aleatórios
-    
+public class Cliente extends Pessoa { //Cliente usa a classe abstrata pessoa
     private Integer id;
 
 
@@ -14,18 +9,21 @@ public class Cliente extends Pessoa {
 
     public int getId() { return id; }
     
+    //Função para atualizar o nome do cliente
     public void atualizarNome(String _novoNome) {
         System.out.println("Atualizando nome do cliente...");
         setNome(_novoNome);
         System.out.println("Nome atualizado com sucesso!");
     }
     
+    //Função para atualizar o email do cliente
     public void atualizarEmail(String _novoEmail) {
         System.out.println("Atualizando Email do cliente...");
         setEmail(_novoEmail);
         System.out.println("Email atualizado com sucesso!");
     }
     
+    //Função para atualizar a idade do cliente
     public void atualizarIdade(Integer _novaIdade) {
         System.out.println("Atualizando Idade do cliente...");
         setIdade(_novaIdade);

@@ -1,24 +1,23 @@
-// SistemaVendas c/ coleções e métodos básico
 import java.util.ArrayList;
 import java.util.List;
 
-public class SistemaVendas implements IVenda { // Implementação da interface IVenda
-    private List<Cliente> clientes = new ArrayList<>();    // Coleções: lista de clientes (Agregação)
-    private List<Evento> eventos = new ArrayList<>();      // Coleções: lista de eventos (Agregação)
-    private List<Ingresso> ingressos = new ArrayList<>();  // Coleções: lista de ingressos (Agregação)
+public class SistemaVendas implements IVenda {
+    private List<Cliente> clientes = new ArrayList<>();    // lista de clientes (Agregação)
+    private List<Evento> eventos = new ArrayList<>();      // lista de eventos (Agregação)
+    private List<Ingresso> ingressos = new ArrayList<>();  // lista de ingressos (Agregação)
     private static int totalVendas = 0;                    // Atributos estáticos: compartilhado entre instâncias
 
-    // Método para cadastrar cliente
+    // cadastro de clientes
     public void cadastrarCliente(Cliente c) {
         clientes.add(c); // Adiciona à coleção
     }
 
-    // Método para cadastrar evento
+    // cadastro de eventos
     public void cadastrarEvento(Evento e) {
         eventos.add(e); // Adiciona à coleção
     }
 
-    // Método para comprar ingresso
+    // comprar ingressos. Podendo ser online ou presencial
     public void comprarIngresso(int clienteId, int eventoId) {
         Cliente cliente = buscarCliente(clienteId);
         Evento evento = buscarEvento(eventoId);
@@ -47,7 +46,7 @@ public class SistemaVendas implements IVenda { // Implementação da interface I
     @Override // Sobrescrita: implementação do método da interface
     public double calcularReceita() {
         double total = 0;
-        for (Ingresso i : ingressos) { // Polimorfismo: itera sobre coleção de ingressos
+        for (Ingresso i : ingressos) { 
             total += i.getEvento().getValorIngresso();
         }
         return total;
@@ -64,12 +63,12 @@ public class SistemaVendas implements IVenda { // Implementação da interface I
         return total;
     }
 
-    // Método auxiliar para buscar cliente
+    // Método para buscar cliente
     private Cliente buscarCliente(int id) {
         return clientes.stream().filter(c -> c.getId() == id).findFirst().orElse(null);
     }
 
-    // Método auxiliar para buscar evento
+    // Método para buscar evento
     private Evento buscarEvento(int id) {
         return eventos.stream().filter(e -> e.getId() == id).findFirst().orElse(null);
     }
@@ -77,5 +76,9 @@ public class SistemaVendas implements IVenda { // Implementação da interface I
     // Método estático para acessar o total de vendas
     public static int getTotalVendas() {
         return totalVendas;
+    }
+
+    public List<Ingresso> getIngressos() {
+        return ingressos;
     }
 }
